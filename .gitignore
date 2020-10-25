@@ -1,0 +1,6 @@
+# Binaries
+*.exe
+/bin
+
+# Env file
+.env
