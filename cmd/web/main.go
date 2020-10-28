@@ -1,9 +1,19 @@
 package main
 
-import "github.com/labstack/echo/v4"
+import (
+	"log"
+
+	"github.com/angelmendozacap/expense-app/config"
+	"github.com/joho/godotenv"
+)
 
 func main() {
-	e := echo.New()
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
-	e.Start(":3030")
+	e := initSetup()
+
+	log.Fatal(e.Start(config.GetPort()))
 }

@@ -1,0 +1,20 @@
+{{template "admin.layout" .}}
+
+{{define "title"}}Roles{{end}}
+
+{{define "content"}}
+<h1>Roles</h1>
+
+<ul>
+  {{range .}}
+    <li>{{.Name}}</li>
+    <li>
+      {{if .IsActive}}
+        <span style="color: seagreen;">Activo</span>
+      {{else}}
+        <span style="color: tomato;">Inactivo</span>
+      {{end}}
+    </li>
+  {{end}}
+</ul>
+{{end}}

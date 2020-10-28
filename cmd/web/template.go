@@ -8,11 +8,11 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type Template struct {
+type tmpl struct {
 	templates *template.Template
 }
 
-func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+func (t *tmpl) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 
@@ -26,8 +26,9 @@ func humanDate(t time.Time) string {
 
 var functions = template.FuncMap{
 	"humanDate": humanDate,
+	"year":      func() int { return time.Now().UTC().Year() },
 }
 
-var t = &Template{
-	templates: template.Must(template.New("Expense").Funcs(functions).ParseGlob("ui/html/*.tmpl")),
+var newTmpl = &tmpl{
+	templates: template.Must(template.New("Expense").Funcs(functions).ParseGlob("./ui/html/*/*.tmpl")),
 }
