@@ -7,14 +7,15 @@
 
 <ul>
   {{range .}}
-    <li>{{.Name}}</li>
-    <li>
-      {{if .IsActive}}
-        <span style="color: seagreen;">Activo</span>
-      {{else}}
-        <span style="color: tomato;">Inactivo</span>
-      {{end}}
-    </li>
+  <li>
+    {{.Name}}
+
+    {{if .IsActive}}
+    <span style="color: seagreen;">Activo</span>
+    {{else}}
+    <span style="color: tomato;">Inactivo</span>
+    {{end}}
+  </li>
   {{end}}
 </ul>
 {{end}}

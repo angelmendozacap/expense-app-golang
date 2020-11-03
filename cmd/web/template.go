@@ -30,5 +30,5 @@ var functions = template.FuncMap{
 }
 
 var newTmpl = &tmpl{
-	templates: template.Must(template.New("Expense").Funcs(functions).ParseGlob("./ui/html/*/*.tmpl")),
+	templates: template.Must(template.New("Expense").Funcs(functions).ParseGlob("./ui/html/**/*.tmpl")),
 }
